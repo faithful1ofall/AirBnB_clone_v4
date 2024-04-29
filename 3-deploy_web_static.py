@@ -2,14 +2,12 @@
 """
 Fabric script based on the file 2-do_deploy_web_static.py that creates and
 distributes an archive to the web servers
-
-execute: fab -f 3-deploy_web_static.py deploy -i ~/.ssh/school -u ubuntu
 """
 
 from fabric.api import env, local, put, run
 from datetime import datetime
 from os.path import exists, isdir
-env.hosts = ["34.229.161.131", "54.89.46.50"]
+env.hosts = ['142.44.167.228', '144.217.246.195']
 
 
 def do_pack():
@@ -46,11 +44,9 @@ def do_deploy(archive_path):
         return False
 
 
-archive_path = do_pack()
-
-
 def deploy():
     """creates and distributes an archive to the web servers"""
+    archive_path = do_pack()
     if archive_path is None:
         return False
     return do_deploy(archive_path)
