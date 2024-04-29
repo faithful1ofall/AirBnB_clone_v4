@@ -90,7 +90,7 @@ class FileStorage:
     def get(self, cls, id):
         """Retrieve an object"""
         if cls is not None and type(cls) is str and id is not None and\
-           type(id) is str and cls in classes:
+           type(id) is str and cls in self.__clsdict:
             key = cls + '.' + id
             obj = self.__objects.get(key, None)
             return obj
@@ -100,7 +100,7 @@ class FileStorage:
     def count(self, cls=None):
         """Count number of objects in storage"""
         total = 0
-        if type(cls) == str and cls in classes:
+        if type(cls) == str and cls in self.__clsdict:
             total = len(self.all(cls))
         elif cls is None:
             total = len(self.__objects)
