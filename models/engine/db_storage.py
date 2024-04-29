@@ -95,7 +95,7 @@ class DBStorage:
         """
         if self.__session:
             self.__session.close()
-        def get(self, cls, id):
+    def get(self, cls, id):
         """Retrieve an object"""
         if cls is not None and type(cls) is str and id is not None and\
            type(id) is str and cls in name2class:
